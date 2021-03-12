@@ -9,17 +9,25 @@ type Person struct {
 }
 
 func main() {
-	fmt.Printf(getWhatToSay("Patrick"))
+	fmt.Printf(getWhatToSay("Patrick", "English"))
 }
 
-const helloPrefix = "Hello,"
 
-func getWhatToSay(name string) string {
-	var person Person;
+func getWhatToSay(name string, lang string) string {
+	var person Person
 	if name != "" {
 		person = Person{name}
 	} else {
 		person = Person{name: "World"}
 	}
-	return fmt.Sprintf("%s '%s'.\n", helloPrefix, person.name)
+
+	prefix := "Hello," // default
+
+	if lang == "German" {
+		prefix = "Hallo,"
+	} else if lang == "French" {
+		prefix = "Bonjour,"
+	}
+
+	return fmt.Sprintf("%s '%s'.\n", prefix, person.name)
 }
