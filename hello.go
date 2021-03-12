@@ -12,7 +12,14 @@ func main() {
 	fmt.Printf(getWhatToSay("Patrick"))
 }
 
+const helloPrefix = "Hello,"
+
 func getWhatToSay(name string) string {
-	patrick := Person{name}
-	return fmt.Sprintf("Hello '%s'.\n", patrick.name)
+	var person Person;
+	if name != "" {
+		person = Person{name}
+	} else {
+		person = Person{name: "World"}
+	}
+	return fmt.Sprintf("%s '%s'.\n", helloPrefix, person.name)
 }
