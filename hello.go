@@ -12,7 +12,6 @@ func main() {
 	fmt.Printf(getWhatToSay("Patrick", "English"))
 }
 
-
 func getWhatToSay(name string, lang string) string {
 	var person Person
 	if name != "" {
@@ -20,14 +19,19 @@ func getWhatToSay(name string, lang string) string {
 	} else {
 		person = Person{name: "World"}
 	}
+	return fmt.Sprintf("%s '%s'.\n", getGreeting(lang), person.name)
+}
 
-	prefix := "Hello," // default
+func getGreeting(lang string) (prefix string) {
 
-	if lang == "German" {
+	switch lang {
+	case "German":
 		prefix = "Hallo,"
-	} else if lang == "French" {
+	case "French":
 		prefix = "Bonjour,"
+	default:
+		prefix = "Hello,"
 	}
 
-	return fmt.Sprintf("%s '%s'.\n", prefix, person.name)
+	return
 }
