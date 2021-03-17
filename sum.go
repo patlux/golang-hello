@@ -9,4 +9,13 @@ func Sum(arr []int) (sum int) {
 	return
 }
 
+func SumAll(arr, arr2 []int) (sumarr []int) {
+	all := [][]int{arr, arr2}
 
+	for _, arr := range all {
+		result := Sum(arr)
+		sumarr = append(sumarr, result)
+	}
+	
+	return
+}

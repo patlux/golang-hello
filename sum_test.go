@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"testing"
+	"reflect"
+)
 
 func TestSum(t *testing.T) {
 
@@ -25,5 +28,16 @@ func TestSum(t *testing.T) {
 			t.Errorf("Expected: %d / Received: %d, %v", expected, actual, given)
 		}
 	})
+
+	t.Run("Should sum a list of slices", func(t *testing.T) {
+
+		actual := SumAll([]int{3, 4}, []int{2, 7})
+		expected := []int{7, 9}
+
+		if !reflect.DeepEqual(actual, expected) {
+			t.Errorf("Expected %d / Received: %d", expected, actual)
+		}
+
+	});
 
 }
