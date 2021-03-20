@@ -26,3 +26,7 @@ func Perimeter(rec Rectangle) float64 {
 func Area(rec Rectangle) float64 {
 	return rec.Width * rec.Height
 }
+
+type Shape interface {
+	Area() float64
+}
