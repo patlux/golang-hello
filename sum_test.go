@@ -1,8 +1,8 @@
 package main
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestSum(t *testing.T) {
@@ -29,15 +29,37 @@ func TestSum(t *testing.T) {
 		}
 	})
 
-	t.Run("Should sum a list of slices", func(t *testing.T) {
+}
 
+func assertSum(t *testing.T, got, want []int) {
+	t.Helper()
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("Expected: %d / Received: %d", got, want)
+	}
+}
+
+func TestSumAll(t *testing.T) {
+
+	t.Run("Should sum a list of slices", func(t *testing.T) {
 		actual := SumAll([]int{3, 4}, []int{2, 7})
 		expected := []int{7, 9}
+		assertSum(t, actual, expected)
+	})
 
-		if !reflect.DeepEqual(actual, expected) {
-			t.Errorf("Expected %d / Received: %d", expected, actual)
-		}
+}
 
-	});
+func TestSumAllTails(t *testing.T) {
+
+	t.Run("Sum all tails", func(t *testing.T) {
+		actual := SumAllTails([]int{3, 4, 2}, []int{2, 7})
+		expected := []int{6, 7}
+		assertSum(t, actual, expected)
+	})
+
+	t.Run("Sum all tails even its empty", func(t *testing.T) {
+		actual := SumAllTails([]int{}, []int{2, 7})
+		expected := []int{0, 7}
+		assertSum(t, actual, expected)
+	})
 
 }
