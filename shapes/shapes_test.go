@@ -12,13 +12,13 @@ func assertNumbers(t *testing.T, got, want float64) {
 }
 
 func TestPerimeter(t *testing.T) {
-	got := Perimeter(10.0, 10.0)
+	got := Perimeter(Rectangle{Width: 10.0, Height: 10.0})
 	want := 40.0
 	assertNumbers(t, got, want)
 }
 
 func TestArea(t *testing.T) {
-	got := Area(2.5, 2)
+	got := Area(Rectangle{Width: 2.5, Height: 2.0})
 	want := 5.0
 	assertNumbers(t, got, want)
 }

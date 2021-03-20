@@ -1,9 +1,14 @@
 package shapes
 
-func Perimeter(a, b float64) float64 {
-	return 2 * (a + b)
+type Rectangle struct {
+	Width float64
+	Height float64
 }
 
-func Area(a, b float64) float64 {
-	return a * b
+func Perimeter(rec Rectangle) float64 {
+	return 2 * (rec.Width + rec.Height)
+}
+
+func Area(rec Rectangle) float64 {
+	return rec.Width * rec.Height
 }
