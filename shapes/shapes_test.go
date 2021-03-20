@@ -18,7 +18,18 @@ func TestPerimeter(t *testing.T) {
 }
 
 func TestArea(t *testing.T) {
-	got := Area(Rectangle{Width: 2.5, Height: 2.0})
-	want := 5.0
-	assertNumbers(t, got, want)
+
+	t.Run("Should calc area for a rectangle", func(t *testing.T) {
+		rec := Rectangle{Width: 2.5, Height: 2.0}
+		got := rec.Area()
+		want := 5.0
+		assertNumbers(t, got, want)
+	})
+
+	t.Run("Should calc area for a circle", func(t *testing.T) {
+		circle := Circle{6.5}
+		got := circle.Area()
+		want := 132.73228961416876 
+		assertNumbers(t, got, want)
+	})
 }
